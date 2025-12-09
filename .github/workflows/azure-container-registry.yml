@@ -36,9 +36,4 @@ jobs:
           context: ./src
           file: ./src/Dockerfile
           push: true
-          tags: ${{ secrets.ACR_REGISTRY }}/${{ github.repository | lower }}:${{ github.sha }}
-
-# Notes:
-# - Only files under src/ are included in the build context (COPY . in Dockerfile will copy only src/ contents).
-# - The workflow does NOT pass the ENV secret into the build; instead provide ENV at runtime (see below).
-# - Required repository secrets: ACR_REGISTRY (e.g. myregistry.azurecr.io), ACR_USERNAME, ACR_PASSWORD.
+          tags: ${{ secrets.ACR_REGISTRY }}/${{ toLower(github.repository) }}:${{ github.sha }}
