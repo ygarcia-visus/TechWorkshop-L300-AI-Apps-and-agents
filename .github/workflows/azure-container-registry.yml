@@ -36,7 +36,7 @@ jobs:
           context: ./src
           file: ./src/Dockerfile
           push: true
-          tags: ${{ secrets.ACR_REGISTRY }}/${{ github.repository }}:${{ github.sha }}
+          tags: ${{ secrets.ACR_REGISTRY }}/${{ github.repository | lower }}:${{ github.sha }}
 
 # Notes:
 # - Only files under src/ are included in the build context (COPY . in Dockerfile will copy only src/ contents).
